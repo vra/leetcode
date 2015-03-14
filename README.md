@@ -1,1 +1,1 @@
-my code when i do leetcode practise
+my code when I do leetcode practise
