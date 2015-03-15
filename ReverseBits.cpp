@@ -48,3 +48,19 @@ public:
         return ret;
     }
 };
+
+//some answer even more simple!
+
+unsigned int reverseBits3(unsigned int n)
+{
+	for (int i = 0; i < 16; i++)
+	{
+		if ((n >> i  & 1) ^ (n >> (31 - i) & 1))
+		{
+			n ^= (1 << i) | (1 << (31 - i));
+		}
+	}
+
+	return n;
+}
+
