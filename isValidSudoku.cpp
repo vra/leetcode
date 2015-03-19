@@ -1,3 +1,12 @@
+/*
+Three flags are used to check whether a number appear.
+
+used1: check each row
+
+used2: check each column
+
+used3: check each sub-boxes
+*/
 class Solution {
 public:
     bool isValidSudoku(vector<vector<char> > &board) {
