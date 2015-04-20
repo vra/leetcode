@@ -1,0 +1,80 @@
+#include <iostream>
+#include <vector>
+
+
+using namespace std;
+
+int eachStep(int*& allResult, bool*& isComputed, int n)
+{
+	if (n < 3)
+	{
+		*(allResult + n - 1) = n;
+		*(isComputed + n - 1) = true;
+
+		return n;
+	}
+
+	int part1 = 0;
+	int part2 = 0;
+
+	if ( *(isComputed + n - 1 -1))
+	{
+		part1 = *(allResult + n - 1 - 1);
+	}
+	else
+	{
+		part1 = eachStep(allResult, isComputed,  n - 1);
+	}
+
+	if ( *(isComputed + n - 1 -2))
+	{
+		part2 = *(allResult + n - 1 - 2);
+	}
+	else
+	{
+		part2 = eachStep(allResult, isComputed, n - 2);
+	}
+
+	int result = part1 + part2;
+	*(allResult + n - 1) = result;
+	*(isComputed + n - 1) = true;
+
+	return result;
+}
+
+
+int climbStairs(int n)
+{
+	int* allResult = new int[n];
+	bool* isComputed = new bool[n];
+	
+	memset(allResult, 0, sizeof(int) * n);
+	for (int i = 0 ; i < n; i++)
+	{
+		*(isComputed + i) = false;
+	}
+
+	return eachStep(allResult, isComputed, n);
+}
+
+
+int climbStairs2(int n) {
+    if (n == 1) return 1;
+    int temp1 = 1;
+    int temp2 = 2;
+    for (int i = 3; i <= n; ++i) {
+        int temp = temp2;
+        temp2 = temp1 + temp2;
+        temp1 = temp;
+    }
+    return temp2;
+}
+
+
+
+int main()
+{
+	int a = climbStairs2(4);
+
+	return 0;
+}
