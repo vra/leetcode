@@ -17,8 +17,8 @@ public:
 
 		for (string word; iss >> word; ++i)
 		{
-			//i==n 说明str 比pattern的模块要多
-			if (i == n || p2i[pattern[i] != w2i[word]])
+			//i==n 脣碌脙梅str 卤脠pattern碌脛脛拢驴茅脪陋露脿
+			if (i == n || p2i[pattern[i]] != w2i[word])
 			{
 				return false;
 			}
