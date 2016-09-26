@@ -1,0 +1,14 @@
+//Given an array of integers, every element appears twice except for one. Find that single one.
+//Link to leetcode: https://leetcode.com/problems/single-number/
+
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int result = 0;
+        for (int i =0; i < nums.size(); ++i){
+            //core idea: A XOR A = 0, 0 XOR A = A
+            result ^= nums[i];
+        }
+        return result;
+    }
+};
