@@ -1,0 +1,45 @@
+//Question: https://leetcode.com/problems/isomorphic-strings/
+/*思路：
+先复制两个字符串，然后遍历字符串，
+每次将对应位置的字符写入到map中。
+如果遍历该字符存在在map中，
+则替换复制版本中的字符为map对应的字符，两个字符串都做一遍，如果两者都满足则为True
+*/
+#include <iostream>
+#include <vector>
+#include <map>
+
+using namespace std;
+
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+		map<char, char> maps;
+		map<char, char> mapt;
+		string rs= s;
+		string rt= t;
+		for (int i = 0;i < s.size(); ++i) {
+			if (maps.find(s[i]) == maps.end()) {
+				maps[s[i]] = t[i];
+			}
+			if (mapt.find(t[i]) == mapt.end()) {
+				mapt[t[i]] = s[i];
+			}
+			rs.replace(i, 1, 1, maps[s[i]]);
+			rt.replace(i, 1, 1, mapt[t[i]]);
+		}
+
+		return !rs.compare(t) && !rt.compare(s);
+    }
+};
+
+
+int main(){
+	Solution s  = Solution();
+
+	bool a = s.isIsomorphic("foo", "egg");
+
+	return 0;
+
+
+}
