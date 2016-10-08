@@ -1,0 +1,52 @@
+#include <iostream>
+
+using namespace std;
+
+//My solution, too slow...
+class Solution {
+public:
+    int findNthDigit(int n) {
+	int currDigits = 0;
+	int i;
+	for (i = 1; currDigits < n; i++){
+		int digits = 0;
+		int copy_i = i;
+		while (copy_i)
+		{
+			copy_i /= 10;
+			digits++;
+		}
+		currDigits += digits;
+	}
+
+	i--;
+	int gap = currDigits - n;
+	while (gap)
+	{
+		i /=10;	
+		gap --;
+	}
+	return i%10;
+  }
+  
+  int findNthDigit(int n) {
+    int len = 1, base = 1;
+    while (n > 9L * base * len) {
+      n -= 9 * base * len;
+      len++;
+      base *= 10;
+    }
+    int start = (n-1)/len + base, remain = (n-1)%len;
+    while (remain--)
+      base /= 10;
+    return (start/base)%10;
+  }
+};
+
+int main(){
+	Solution s = Solution();
+	int i = s.findNthDigit(11);
+
+	return 0;
+
+}
