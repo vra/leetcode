@@ -16,7 +16,7 @@ public:
         int low = 1 , high = n;
         int mid;
         while(low <=high) {
-            mid = (high-low)/2 +low;
+            mid = (high-low)/2 +low; //Don't use (low+high)/2 in case of overflow
             if(guess(mid) == 0) return mid;
             else if(guess(mid) == -1)
                 high = mid-1;
