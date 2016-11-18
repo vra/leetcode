@@ -1,6 +1,4 @@
-H h7540767 
-Reputation:  0
- class Solution {
+class Solution {
 private:
     int onecnt(int num)
     {
